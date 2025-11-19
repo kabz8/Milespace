@@ -44,6 +44,9 @@ export function registerRoutes(app: Express): void {
         success: true,
         message: "Contact form submitted successfully",
         submissionId: submission.id,
+        whatsappUrl: `https://wa.me/254720176247?text=${encodeURIComponent(
+          `Hi Milespace, I'm ${validatedData.name}. ${validatedData.serviceInterest.toUpperCase()} - ${validatedData.message}`
+        )}`,
       });
     } catch (error) {
       if (error instanceof z.ZodError) {

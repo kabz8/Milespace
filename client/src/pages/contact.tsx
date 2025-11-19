@@ -43,11 +43,15 @@ export default function Contact() {
     mutationFn: async (data: ContactForm) => {
       return await apiRequest("POST", "/api/contact", data);
     },
-    onSuccess: () => {
+    onSuccess: async (res) => {
+      const payload = await res.json();
       toast({
         title: "Message sent successfully!",
         description: "We'll get back to you within 24 hours.",
       });
+      if (payload?.whatsappUrl) {
+        window.open(payload.whatsappUrl, "_blank", "noopener,noreferrer");
+      }
       form.reset();
     },
     onError: () => {
