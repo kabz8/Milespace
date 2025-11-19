@@ -4,7 +4,16 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
-import { ArrowRight, Code, Smartphone, Lightbulb, CheckCircle, AlertCircle, Quote } from "lucide-react";
+import {
+  ArrowRight,
+  Code,
+  Smartphone,
+  Lightbulb,
+  CheckCircle,
+  AlertCircle,
+  Quote,
+  Sparkles,
+} from "lucide-react";
 import { type Project } from "@shared/schema";
 import heroImage from "@assets/generated_images/Hero_workspace_tech_scene_81addf33.png";
 import ecommerceProject from "@assets/generated_images/E-commerce_website_project_mockup_7f163293.png";
@@ -67,17 +76,22 @@ export default function Home() {
     {
       icon: Code,
       title: "Website Development",
-      description: "Custom websites built with modern technologies, optimized for performance and user experience.",
+      description: "Marketing and product sites engineered with blazing performance, accessibility, and localized storytelling.",
     },
     {
       icon: Smartphone,
-      title: "Software Development",
-      description: "Enterprise-grade software solutions tailored to your business needs and workflows.",
+      title: "App Development",
+      description: "Native-feel mobile + desktop apps with secure authentication, offline-first flows, and OTA updates.",
     },
     {
       icon: Lightbulb,
       title: "Consulting Services",
       description: "Strategic technology consulting to help you make informed decisions about your digital transformation.",
+    },
+    {
+      icon: Sparkles,
+      title: "Product Enablement",
+      description: "Research, UI systems, and data insights that keep your internal teams shipping confidently.",
     },
   ];
 
@@ -109,25 +123,42 @@ export default function Home() {
     },
   ];
 
+  const heroHighlights = [
+    "Custom Apps",
+    "Commerce Platforms",
+    "Growth Experiments",
+  ];
+
   return (
     <div className="min-h-screen flex flex-col">
-      <section className="relative h-[85vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
+      <section className="relative h-[85vh] flex items-center justify-center overflow-hidden bg-slate-950 text-white">
+        <div className="absolute inset-0 opacity-50">
           <img
             src={heroImage}
             alt="Modern workspace"
             className="w-full h-full object-cover"
             data-testid="img-hero"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-slate-900/90 to-slate-900/40" />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight" data-testid="text-hero-title">
-            Transform Your Vision Into Reality
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+          <Badge className="bg-white/10 text-white border-white/30 uppercase tracking-[0.3em]">
+            Nairobi · Remote-ready
+          </Badge>
+          <h1
+            className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight"
+            data-testid="text-hero-title"
+          >
+            Build polish-rich <span className="text-primary">apps</span> and
+            platforms that Kenyans love to use.
           </h1>
-          <p className="text-lg sm:text-xl text-white/90 mb-8 max-w-2xl mx-auto" data-testid="text-hero-subtitle">
-            Premium software development agency delivering exceptional digital solutions that drive business growth
+          <p
+            className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto"
+            data-testid="text-hero-subtitle"
+          >
+            We pair senior product strategists with battle-tested engineers to
+            design, build, and scale modern digital experiences in record time.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/work">
@@ -150,6 +181,16 @@ export default function Home() {
                 Free Consultation
               </Button>
             </Link>
+          </div>
+          <div className="flex flex-wrap justify-center gap-3 text-sm text-white/80">
+            {heroHighlights.map((highlight) => (
+              <span
+                key={highlight}
+                className="rounded-full border border-white/20 px-4 py-1 backdrop-blur-sm bg-white/10"
+              >
+                {highlight}
+              </span>
+            ))}
           </div>
         </div>
       </section>
@@ -239,11 +280,11 @@ export default function Home() {
               Our Services
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Comprehensive digital solutions tailored to your business needs
+              Comprehensive digital solutions covering research, design, engineering, QA, and launch support.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {services.map((service, index) => (
               <Card key={index} className="p-8 hover-elevate active-elevate-2 transition-all" data-testid={`card-service-${index}`}>
                 <service.icon className="h-12 w-12 text-primary mb-4" data-testid={`icon-service-${index}`} />
@@ -285,7 +326,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-20 bg-primary text-primary-foreground">
+      <section className="py-20 bg-gradient-to-br from-primary to-indigo-500 text-primary-foreground">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-display text-4xl sm:text-5xl font-semibold mb-6" data-testid="text-cta-title">
             Ready to Build Something Amazing?

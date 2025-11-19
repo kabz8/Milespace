@@ -14,6 +14,8 @@ import {
   Workflow,
   Users,
   CheckCircle,
+  Cpu,
+  MonitorSmartphone,
 } from "lucide-react";
 
 const serviceAreas = [
@@ -25,9 +27,9 @@ const serviceAreas = [
   },
   {
     icon: Smartphone,
-    title: "Product & App Development",
+    title: "App Development",
     description: "Cross-platform mobile and desktop applications with delightful UX, real-time features, and secure authentication.",
-    highlights: ["React Native & Tauri", "Offline-first patterns", "App Store readiness"],
+    highlights: ["React Native & Swift", "Offline-first patterns", "App Store readiness"],
   },
   {
     icon: Layers,
@@ -76,6 +78,30 @@ const guarantees = [
   "Clear milestones and KES-denominated budgets",
   "Security-first coding standards",
   "Post-launch support with SLAs",
+];
+
+const appBundles = [
+  {
+    icon: MonitorSmartphone,
+    title: "Launch Pack",
+    price: "KES 280,000 · 4-6 weeks",
+    description: "MVP-ready marketing site or lightweight web app including analytics, CMS, and QA handover.",
+    items: ["UX wireframes", "Vite/Next foundation", "Headless CMS", "QA + training"],
+  },
+  {
+    icon: Smartphone,
+    title: "App Momentum",
+    price: "KES 520,000 · 8-10 weeks",
+    description: "iOS, Android, and desktop app built with shared codebase, biometric auth, and push notifications.",
+    items: ["React Native or Tauri", "Secure auth + storage", "CI/CD pipelines", "Beta launch support"],
+  },
+  {
+    icon: Cpu,
+    title: "Scale Platform",
+    price: "Custom · 12+ weeks",
+    description: "End-to-end product squads shipping complex SaaS or marketplace platforms with data, billing, and automation.",
+    items: ["Product strategy sprint", "Microservice-ready APIs", "Observability stack", "Dedicated PM & QA"],
+  },
 ];
 
 export default function Services() {
@@ -139,6 +165,39 @@ export default function Services() {
                     </Badge>
                   ))}
                 </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-card">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <h2 className="font-display text-4xl font-semibold mb-4">
+              App Development Bundles
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Pick a launch track that matches your roadmap. Every bundle can expand into a managed product squad as you grow.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {appBundles.map((bundle) => (
+              <Card key={bundle.title} className="p-8 flex flex-col gap-6 hover-elevate active-elevate-2 transition-all">
+                <bundle.icon className="h-10 w-10 text-primary" />
+                <div>
+                  <CardTitle className="text-2xl mb-2">{bundle.title}</CardTitle>
+                  <p className="text-primary font-semibold">{bundle.price}</p>
+                </div>
+                <CardDescription className="text-base">{bundle.description}</CardDescription>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  {bundle.items.map((item) => (
+                    <li key={item} className="flex gap-2">
+                      <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </Card>
             ))}
           </div>

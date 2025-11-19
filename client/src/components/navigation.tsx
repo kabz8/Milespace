@@ -44,7 +44,7 @@ export function Navigation() {
             <img
               src={theme === "dark" ? logoWhite : logoBlue}
               alt="Milespace"
-              className="h-9 sm:h-10 w-auto transition-opacity hover:opacity-80"
+              className="h-11 sm:h-12 w-auto transition-opacity hover:opacity-80 drop-shadow-md"
               data-testid="img-logo"
             />
           </Link>

@@ -23,12 +23,58 @@ const projectImages: Record<string, string> = {
   "software": educationProject,
 };
 
+const fallbackProjects: Project[] = [
+  {
+    id: "fallback-marketplace",
+    title: "Marketplace Revamp",
+    client: "Zuri Marketplace",
+    category: "ecommerce",
+    description: "Multi-merchant marketplace with escrow payments, vendor onboarding, and cloud-native search.",
+    imageUrl: "/assets/ecommerce.png",
+    tags: ["Next.js", "Postgres", "Stripe"],
+    featured: true,
+  },
+  {
+    id: "fallback-mobile-wallet",
+    title: "Digital Wallet Suite",
+    client: "PayWave Africa",
+    category: "mobile",
+    description: "React Native wallet with biometric login, instant P2P transfers, and savings goals.",
+    imageUrl: "/assets/mobile.png",
+    tags: ["React Native", "GraphQL"],
+    featured: true,
+  },
+  {
+    id: "fallback-health",
+    title: "Telehealth Platform",
+    client: "AfyaWell Clinics",
+    category: "saas",
+    description: "HIPAA-inspired telemedicine, triage chat, and EHR integrations built for Kenyan clinics.",
+    imageUrl: "/assets/health.png",
+    tags: ["Vue", "Supabase"],
+    featured: true,
+  },
+  {
+    id: "fallback-education",
+    title: "LMS Modernization",
+    client: "EduSmart",
+    category: "software",
+    description: "Learning platform with adaptive content, cohort reporting, and live class tooling.",
+    imageUrl: "/assets/education.png",
+    tags: ["React", "NestJS"],
+    featured: true,
+  },
+];
+
 export default function Work() {
   const [selectedCategory, setSelectedCategory] = useState<ProjectCategory>("all");
   
   const { data: projects, isLoading, error } = useQuery<Project[]>({
     queryKey: ["/api/projects"],
   });
+
+  const projectSource: Project[] =
+    projects && projects.length > 0 ? projects : fallbackProjects;
 
   const categories = [
     { value: "all" as ProjectCategory, label: "All Projects" },
@@ -41,8 +87,10 @@ export default function Work() {
 
   const filteredProjects =
     selectedCategory === "all"
-      ? (projects || [])
-      : (projects || []).filter((p) => p.category === selectedCategory);
+      ? projectSource
+      : projectSource.filter((p) => p.category === selectedCategory);
+
+  const showErrorBanner = Boolean(error);
 
   return (
     <div className="min-h-screen pt-16">
@@ -70,6 +118,13 @@ export default function Work() {
             ))}
           </div>
 
+          {showErrorBanner && (
+            <div className="mb-6 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900 flex items-center gap-2">
+              <AlertCircle className="h-4 w-4 flex-shrink-0" />
+              Live project feed is temporarily unavailable, so we're showcasing recent case studies instead.
+            </div>
+          )}
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {isLoading ? (
               <>
@@ -85,11 +140,6 @@ export default function Work() {
                   </Card>
                 ))}
               </>
-            ) : error ? (
-              <div className="col-span-full text-center py-12">
-                <AlertCircle className="h-12 w-12 text-destructive mx-auto mb-4" />
-                <p className="text-muted-foreground">Failed to load projects. Please try again later.</p>
-              </div>
             ) : filteredProjects.length === 0 ? (
               <div className="col-span-full text-center py-12">
                 <p className="text-muted-foreground">No projects found in this category.</p>
