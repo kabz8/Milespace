@@ -47,17 +47,31 @@ export default function Pricing() {
 
   const shareLinkMutation = useMutation({
     mutationFn: async (packageId: string) => {
-      const response: any = await apiRequest("POST", "/api/pricing/share", { packageId });
-      return response;
+      const response = await apiRequest("POST", "/api/pricing/share", { packageId });
+      return await response.json();
     },
-    onSuccess: (data: any, packageId) => {
+    onSuccess: async (data: any, packageId) => {
       const pkg = pricingPackages.find((p) => p.id === packageId);
-      navigator.clipboard.writeText(data.link.url);
-      toast({
-        title: "Link copied!",
-        description: `Shareable link for "${pkg?.name}" copied to clipboard`,
-      });
-      setGeneratingFor(null);
+      const shareUrl = data?.link?.url;
+
+      if (!shareUrl) {
+        throw new Error("Missing share URL");
+      }
+
+      try {
+        await navigator.clipboard.writeText(shareUrl);
+        toast({
+          title: "Link copied!",
+          description: `Shareable link for "${pkg?.name}" copied to clipboard`,
+        });
+      } catch {
+        toast({
+          title: "Link ready",
+          description: `Shareable link for "${pkg?.name}" is ready: ${shareUrl}`,
+        });
+      } finally {
+        setGeneratingFor(null);
+      }
     },
     onError: () => {
       toast({
