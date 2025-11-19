@@ -41,9 +41,9 @@ export class MemStorage implements IStorage {
     const sampleProjects: InsertProject[] = [
       {
         title: "E-Commerce Platform",
-        client: "RetailCo Kenya",
+        client: "RetailCo Global",
         category: "ecommerce",
-        description: "Modern e-commerce solution with seamless checkout, inventory management, and payment integration for a leading Kenyan retail brand.",
+        description: "Modern e-commerce solution with seamless checkout, inventory management, and payment integration for a leading international retail brand.",
         imageUrl: "/assets/ecommerce.png",
         tags: ["React", "Node.js", "Stripe", "MongoDB"],
         featured: true,
@@ -59,7 +59,7 @@ export class MemStorage implements IStorage {
       },
       {
         title: "Restaurant Booking System",
-        client: "DineEasy Kenya",
+        client: "DineEasy Group",
         category: "web",
         description: "Streamlined reservation system with table management, menu integration, and customer analytics.",
         imageUrl: "/assets/restaurant.png",

@@ -74,7 +74,7 @@ const industries = [
 ];
 
 const guarantees = [
-  "Dedicated project lead in Nairobi",
+  "Dedicated product lead embedded with your team",
   "Clear milestones and KES-denominated budgets",
   "Security-first coding standards",
   "Post-launch support with SLAs",
@@ -114,10 +114,10 @@ export default function Services() {
             End-to-end delivery
           </Badge>
           <h1 className="font-display text-5xl sm:text-6xl font-bold mb-6 max-w-3xl">
-            Services built for ambitious Kenyan brands
+            Services built for ambitious global brands
           </h1>
           <p className="text-lg text-white/80 max-w-2xl mb-10">
-            From strategy to scale, we craft digital products that are fast, resilient, and tailored to East African markets. Every engagement includes research, design, engineering, QA, and enablement.
+            From strategy to scale, we craft digital products that are fast, resilient, and tailored to diverse markets worldwide. Every engagement includes research, design, engineering, QA, and enablement.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link href="/contact">
@@ -232,7 +232,7 @@ export default function Services() {
               <span className="text-sm uppercase tracking-[0.2em] text-muted-foreground">Industries</span>
             </div>
             <h3 className="font-display text-3xl font-semibold mb-6">
-              Built for Kenyan and global markets
+              Built for global markets
             </h3>
             <div className="grid grid-cols-2 gap-4">
               {industries.map((industry) => (

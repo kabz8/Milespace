@@ -40,16 +40,16 @@
 - **Case Study Modal/Page**: Full project breakdown with multiple images, challenge/solution/results structure
 
 ### About Page
-- **Hero**: Team/office image or Kenya landscape (50vh)
+- **Hero**: Team/office image or global cityscape (50vh)
 - **Story Section**: Two-column layout (image + narrative text)
 - **Mission/Values**: Icon cards in 3-column grid
-- **Location Highlight**: Map integration or Kenya-focused imagery, office details
+- **Location Highlight**: Map integration or global footprint imagery, office details
 - **Team Section** (if applicable): Photo grid with names/roles
 
 ### Contact Page
 - **Two-Column Layout**: 
   - Left: Contact form (Name, Email, Phone, Service Interest dropdown, Message)
-  - Right: Contact information card with phone (0720176247), email (hello@milespace.co.ke), location (Kenya), office hours
+  - Right: Contact information card with phone (0720176247), email (hello@milespace.co.ke), global service regions, office hours
 - **Map Integration**: Embedded map or location visual
 - **Response Time**: "We typically respond within 24 hours" trust message
 
@@ -94,7 +94,7 @@
 
 ### Hero Images
 - **Homepage Hero**: Large (1920x1080) - stunning software/code visualization, modern office setup, or creative tech abstract. Should convey innovation and professionalism
-- **About Page Hero**: Kenya landscape or team workspace (1920x800)
+- **About Page Hero**: Global cityscape or team workspace (1920x800)
 - **Section Backgrounds**: Subtle gradient overlays for text readability
 
 ### Project Showcase Images
@@ -106,7 +106,7 @@
 ### Supporting Imagery
 - Service illustrations or icons for each offering
 - Team photos for About page (if available)
-- Office/workspace photography showing Kenya location
+- Office/workspace photography showcasing global collaboration
 - Client logos (if permission obtained)
 
 **Image Treatment**: All images should have subtle rounded corners (rounded-lg to rounded-xl), proper aspect ratios maintained, and optimized loading

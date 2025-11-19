@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Target, Users, Zap, Globe } from "lucide-react";
-import kenyaImage from "@assets/generated_images/Kenya_cityscape_aerial_view_5fa70326.png";
+import cityscapeImage from "@assets/generated_images/Global_cityscape_aerial_view_5fa70326.png";
 
 export default function About() {
   const values = [
@@ -31,8 +31,8 @@ export default function About() {
       <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src={kenyaImage}
-            alt="Nairobi, Kenya"
+            src={cityscapeImage}
+            alt="City skyline"
             className="w-full h-full object-cover"
             data-testid="img-about-hero"
           />
@@ -44,7 +44,7 @@ export default function About() {
             About Milespace
           </h1>
           <p className="text-xl text-white/90" data-testid="text-about-subtitle">
-            Pioneering digital excellence from the heart of Kenya
+            Pioneering digital excellence for global teams
           </p>
         </div>
       </section>
@@ -58,7 +58,7 @@ export default function About() {
               </h2>
               <div className="space-y-4 text-muted-foreground">
                 <p>
-                  Milespace was founded with a clear vision: to deliver world-class software development services that empower businesses to thrive in the digital age. Based in Kenya, we've built a reputation for excellence by combining technical expertise with creative problem-solving.
+                  Milespace was founded with a clear vision: to deliver world-class software development services that empower businesses to thrive in the digital age. We've built a reputation for excellence by combining technical expertise with creative problem-solving.
                 </p>
                 <p>
                   Our team of passionate developers, designers, and strategists works tirelessly to transform ideas into powerful digital solutions. We believe that great software should not only function flawlessly but also provide exceptional user experiences that drive business growth.
@@ -129,14 +129,14 @@ export default function About() {
       <section className="py-20 bg-background">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-display text-4xl font-semibold mb-6" data-testid="text-location-title">
-            Located in Kenya
+            Globally connected
           </h2>
           <p className="text-lg text-muted-foreground mb-8">
-            We're proud to be part of Kenya's thriving tech ecosystem, contributing to the growth of digital innovation across East Africa and serving clients worldwide.
+            We partner with clients across Africa, Europe, the Middle East, and North America—bringing local insight and international best practices to every engagement.
           </p>
           <div className="flex items-center justify-center gap-2 text-muted-foreground">
             <Globe className="h-5 w-5 text-primary" />
-            <span className="text-lg" data-testid="text-location">Kenya, East Africa</span>
+            <span className="text-lg" data-testid="text-location">Remote-first, collaborating worldwide</span>
           </div>
         </div>
       </section>

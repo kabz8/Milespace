@@ -13,15 +13,17 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
           <div className="space-y-4">
-            <img
-              src={theme === "dark" ? logoWhite : logoBlue}
-              alt="Milespace"
-              className="h-11 w-auto drop-shadow-sm"
-              data-testid="img-footer-logo"
-            />
-            <p className="text-sm text-muted-foreground">
-              Premium software development agency delivering exceptional digital solutions across Kenya and beyond.
-            </p>
+            <div className="flex items-center gap-4">
+              <img
+                src={theme === "dark" ? logoWhite : logoBlue}
+                alt="Milespace"
+                className="h-24 w-auto drop-shadow-sm"
+                data-testid="img-footer-logo"
+              />
+              <p className="text-sm text-muted-foreground max-w-xs">
+                Premium software development partner delivering global digital experiences from strategy to launch.
+              </p>
+            </div>
           </div>
 
           <div>
@@ -82,7 +84,7 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-2 text-sm text-muted-foreground">
                 <MapPin className="h-4 w-4" />
-                <span data-testid="text-footer-location">Kenya</span>
+                <span data-testid="text-footer-location">Global delivery across Africa, Europe, and beyond</span>
               </li>
             </ul>
           </div>

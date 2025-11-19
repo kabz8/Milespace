@@ -49,7 +49,7 @@ const fallbackProjects: Project[] = [
     title: "Telehealth Platform",
     client: "AfyaWell Clinics",
     category: "saas",
-    description: "HIPAA-inspired telemedicine, triage chat, and EHR integrations built for Kenyan clinics.",
+    description: "HIPAA-inspired telemedicine, triage chat, and EHR integrations built for regional clinics.",
     imageUrl: "/assets/health.png",
     tags: ["Vue", "Supabase"],
     featured: true,
@@ -101,7 +101,7 @@ export default function Work() {
               Our Work
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto" data-testid="text-work-subtitle">
-              Showcasing successful projects that have transformed businesses across Kenya and beyond
+              Showcasing successful projects that have transformed businesses across continents
             </p>
           </div>
 

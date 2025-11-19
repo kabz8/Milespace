@@ -30,7 +30,7 @@ const fallbackProjects: Project[] = [
   {
     id: "fallback-ecommerce",
     title: "E-Commerce Platform",
-    client: "RetailCo Kenya",
+    client: "RetailCo Global",
     category: "ecommerce",
     description: "Full-stack commerce solution with seamless checkout and inventory control tailored for high-growth retailers.",
     imageUrl: "/assets/ecommerce.png",
@@ -50,9 +50,9 @@ const fallbackProjects: Project[] = [
   {
     id: "fallback-restaurant",
     title: "Restaurant Booking System",
-    client: "DineEasy Kenya",
+    client: "DineEasy Group",
     category: "web",
-    description: "Reservation, table management, and guest analytics platform powering restaurant chains across Nairobi.",
+    description: "Reservation, table management, and guest analytics platform powering restaurant groups across major cities.",
     imageUrl: "/assets/restaurant.png",
     tags: ["Vue", "Postgres"],
     featured: true,
@@ -107,7 +107,7 @@ export default function Home() {
       quote:
         "Milespace guided us from concept to launch with absolute clarity. Our conversion rates doubled within three months.",
       name: "Grace Kamau",
-      role: "Head of Digital, RetailCo Kenya",
+      role: "Head of Digital, RetailCo Global",
     },
     {
       quote:
@@ -144,14 +144,14 @@ export default function Home() {
 
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
           <Badge className="bg-white/10 text-white border-white/30 uppercase tracking-[0.3em]">
-            Nairobi · Remote-ready
+            Global · Remote-first
           </Badge>
           <h1
             className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight"
             data-testid="text-hero-title"
           >
             Build polish-rich <span className="text-primary">apps</span> and
-            platforms that Kenyans love to use.
+            platforms that audiences love to use.
           </h1>
           <p
             className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto"
@@ -307,7 +307,7 @@ export default function Home() {
               Client Testimonials
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Teams across Kenya trust Milespace to deliver mission-critical software.
+              Teams worldwide trust Milespace to deliver mission-critical software.
             </p>
           </div>
 

@@ -242,7 +242,7 @@ export default function Contact() {
                     <div>
                       <div className="font-medium mb-1">Location</div>
                       <div className="text-muted-foreground" data-testid="text-location">
-                        Kenya
+                        Serving clients globally (remote-first)
                       </div>
                     </div>
                   </div>

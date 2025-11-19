@@ -36,8 +36,8 @@ const faqs = [
     answer: "Absolutely! Many clients start with a basic package and expand as their business grows. We'll design your solution with scalability in mind, making future upgrades seamless.",
   },
   {
-    question: "Do you work with clients outside Kenya?",
-    answer: "Yes, we work with clients worldwide. We use modern collaboration tools to ensure smooth communication and project management regardless of location.",
+    question: "Do you work with clients internationally?",
+    answer: "Yes, we collaborate with teams worldwide. We use modern communication and project management tools to keep distributed stakeholders aligned.",
   },
 ];
 

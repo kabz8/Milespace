@@ -39,12 +39,12 @@ export function Navigation() {
       }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between py-4 min-h-[6rem]">
           <Link href="/" data-testid="link-home">
             <img
               src={theme === "dark" ? logoWhite : logoBlue}
               alt="Milespace"
-              className="h-11 sm:h-12 w-auto transition-opacity hover:opacity-80 drop-shadow-md"
+              className="h-24 sm:h-28 w-auto transition-opacity hover:opacity-80 drop-shadow-md"
               data-testid="img-logo"
             />
           </Link>
