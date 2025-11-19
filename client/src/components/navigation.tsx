@@ -34,10 +34,8 @@ export function Navigation() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-background/80 backdrop-blur-md border-b"
-          : "bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 border-b bg-background transition-shadow duration-300 ${
+        scrolled ? "shadow-md" : "shadow-sm"
       }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -46,7 +44,7 @@ export function Navigation() {
             <img
               src={theme === "dark" ? logoWhite : logoBlue}
               alt="Milespace"
-              className="h-7 w-auto transition-opacity hover:opacity-80"
+              className="h-9 sm:h-10 w-auto transition-opacity hover:opacity-80"
               data-testid="img-logo"
             />
           </Link>

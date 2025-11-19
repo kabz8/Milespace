@@ -16,7 +16,7 @@ export function Footer() {
             <img
               src={theme === "dark" ? logoWhite : logoBlue}
               alt="Milespace"
-              className="h-7 w-auto"
+              className="h-9 w-auto"
               data-testid="img-footer-logo"
             />
             <p className="text-sm text-muted-foreground">

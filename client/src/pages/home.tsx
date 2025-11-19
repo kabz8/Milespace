@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
-import { ArrowRight, Code, Smartphone, Lightbulb, CheckCircle, AlertCircle } from "lucide-react";
+import { ArrowRight, Code, Smartphone, Lightbulb, CheckCircle, AlertCircle, Quote } from "lucide-react";
 import { type Project } from "@shared/schema";
 import heroImage from "@assets/generated_images/Hero_workspace_tech_scene_81addf33.png";
 import ecommerceProject from "@assets/generated_images/E-commerce_website_project_mockup_7f163293.png";
@@ -17,12 +17,51 @@ const projectImages: Record<string, string> = {
   "web": restaurantProject,
 };
 
+const fallbackProjects: Project[] = [
+  {
+    id: "fallback-ecommerce",
+    title: "E-Commerce Platform",
+    client: "RetailCo Kenya",
+    category: "ecommerce",
+    description: "Full-stack commerce solution with seamless checkout and inventory control tailored for high-growth retailers.",
+    imageUrl: "/assets/ecommerce.png",
+    tags: ["React", "Node.js", "Stripe"],
+    featured: true,
+  },
+  {
+    id: "fallback-mobile",
+    title: "Mobile Banking Suite",
+    client: "FinanceHub Africa",
+    category: "mobile",
+    description: "Secure mobile banking experience with biometric auth, realtime transfers, and proactive fraud monitoring.",
+    imageUrl: "/assets/mobile.png",
+    tags: ["React Native", "Firebase"],
+    featured: true,
+  },
+  {
+    id: "fallback-restaurant",
+    title: "Restaurant Booking System",
+    client: "DineEasy Kenya",
+    category: "web",
+    description: "Reservation, table management, and guest analytics platform powering restaurant chains across Nairobi.",
+    imageUrl: "/assets/restaurant.png",
+    tags: ["Vue", "Postgres"],
+    featured: true,
+  },
+];
+
 export default function Home() {
   const { data: projects, isLoading, error } = useQuery<Project[]>({
     queryKey: ["/api/projects"],
   });
 
-  const featuredProjects = projects?.filter(p => p.featured).slice(0, 3) || [];
+  const projectSource: Project[] =
+    projects && projects.length > 0 ? projects : fallbackProjects;
+  const featuredProjects =
+    projectSource.filter((p) => p.featured).slice(0, 3) || [];
+  const hasProjects = (projects?.length ?? 0) > 0;
+  const showSkeletons = isLoading && !hasProjects;
+  const isUsingFallback = !hasProjects && projectSource === fallbackProjects;
 
   const services = [
     {
@@ -47,6 +86,27 @@ export default function Home() {
     "Cutting-edge technology stack",
     "Transparent pricing and communication",
     "On-time delivery guaranteed",
+  ];
+
+  const testimonials = [
+    {
+      quote:
+        "Milespace guided us from concept to launch with absolute clarity. Our conversion rates doubled within three months.",
+      name: "Grace Kamau",
+      role: "Head of Digital, RetailCo Kenya",
+    },
+    {
+      quote:
+        "They feel like an extension of our team—disciplined sprints, proactive communication, and beautiful engineering.",
+      name: "Tariq Noor",
+      role: "COO, FinanceHub Africa",
+    },
+    {
+      quote:
+        "From discovery workshops to rollout, everything was meticulous. The platform is rock solid and easy to maintain.",
+      name: "Dr. Sheila Wanjiru",
+      role: "Director, AfyaWell Clinics",
+    },
   ];
 
   return (
@@ -105,8 +165,15 @@ export default function Home() {
             </p>
           </div>
 
+          {isUsingFallback && (
+            <div className="mb-8 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900 flex items-center gap-2">
+              <AlertCircle className="h-4 w-4 flex-shrink-0" />
+              Showing sample projects while we reconnect to the live portfolio.
+            </div>
+          )}
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {isLoading ? (
+            {showSkeletons ? (
               <>
                 {[1, 2, 3].map((i) => (
                   <Card key={i} className="overflow-hidden">
@@ -120,14 +187,9 @@ export default function Home() {
                   </Card>
                 ))}
               </>
-            ) : error ? (
-              <div className="col-span-full text-center py-12">
-                <AlertCircle className="h-12 w-12 text-destructive mx-auto mb-4" />
-                <p className="text-muted-foreground">Failed to load projects. Please try again later.</p>
-              </div>
             ) : featuredProjects.length === 0 ? (
               <div className="col-span-full text-center py-12">
-                <p className="text-muted-foreground">No featured projects available.</p>
+                <p className="text-muted-foreground">No featured projects available right now.</p>
               </div>
             ) : (
               featuredProjects.map((project) => (
@@ -191,6 +253,32 @@ export default function Home() {
                 <p className="text-muted-foreground">
                   {service.description}
                 </p>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-background">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="font-display text-4xl sm:text-5xl font-semibold mb-4">
+              Client Testimonials
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Teams across Kenya trust Milespace to deliver mission-critical software.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <Card key={index} className="p-8 flex flex-col gap-6 hover-elevate active-elevate-2 transition-all">
+                <Quote className="h-8 w-8 text-primary" />
+                <p className="text-lg text-foreground flex-1">“{testimonial.quote}”</p>
+                <div>
+                  <p className="font-semibold">{testimonial.name}</p>
+                  <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                </div>
               </Card>
             ))}
           </div>
