@@ -5,7 +5,6 @@ import { useTheme } from "@/components/theme-provider";
 import { useState, useEffect } from "react";
 import logoWhite from "@assets/milespace white_1763548618643.png";
 import logoBlue from "@assets/milespace blue_1763548618644.png";
-import logoBlack from "@assets/milespace black_1763548618645.png";
 
 export function Navigation() {
   const { theme, toggleTheme } = useTheme();
@@ -44,7 +43,7 @@ export function Navigation() {
             <img
               src={theme === "dark" ? logoWhite : logoBlue}
               alt="Milespace"
-              className="h-24 sm:h-28 w-auto transition-opacity hover:opacity-80 drop-shadow-md"
+              className="h-16 sm:h-[4.75rem] w-auto max-h-[4.75rem] transition-opacity hover:opacity-80 drop-shadow-md"
               data-testid="img-logo"
             />
           </Link>

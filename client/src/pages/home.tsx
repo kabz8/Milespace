@@ -20,7 +20,6 @@ import {
   Users,
 } from "lucide-react";
 import { type Project } from "@shared/schema";
-import heroImage from "@assets/generated_images/Hero_workspace_tech_scene_81addf33.png";
 import ecommerceProject from "@assets/generated_images/E-commerce_website_project_mockup_7f163293.png";
 import bankingProject from "@assets/generated_images/Mobile_banking_app_mockup_b9f02438.png";
 import restaurantProject from "@assets/generated_images/Restaurant_booking_web_app_50b92408.png";
@@ -190,80 +189,119 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <section className="relative h-[85vh] flex items-center justify-center overflow-hidden bg-slate-950 text-white">
-        <div className="absolute inset-0 opacity-50">
-          <img
-            src={heroImage}
-            alt="Modern workspace"
-            className="w-full h-full object-cover"
-            data-testid="img-hero"
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-slate-900/90 to-slate-900/40" />
-        </div>
-
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
-          <Badge className="bg-white/10 text-white border-white/30 uppercase tracking-[0.3em]">
-            Global · Remote-first
-          </Badge>
-          <h1
-            className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight"
-            data-testid="text-hero-title"
-          >
-            Build polish-rich <span className="text-primary">apps</span> and
-            platforms that audiences love to use.
-          </h1>
-          <p
-            className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto"
-            data-testid="text-hero-subtitle"
-          >
-            We pair senior product strategists with battle-tested engineers to
-            design, build, and scale modern digital experiences in record time.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/work">
-              <Button
-                size="lg"
-                variant="outline"
-                className="bg-white/10 backdrop-blur-md border-white/20 text-white hover:bg-white/20"
-                data-testid="button-view-work"
-              >
-                View Our Work
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </Link>
-            <Link href="/contact">
-              <Button
-                size="lg"
-                className="bg-primary text-primary-foreground border border-primary-border"
-                data-testid="button-hero-consultation"
-              >
-                Free Consultation
-              </Button>
-            </Link>
+      <section className="pt-32 pb-16 bg-background">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
+          <div className="space-y-6 text-left">
+            <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1 text-xs font-semibold uppercase tracking-[0.4em] text-primary">
+              Milespace · Global Studio
+            </span>
+            <h1
+              className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight"
+              data-testid="text-hero-title"
+            >
+              Design, build, and scale modern software with a senior product team.
+            </h1>
+            <p
+              className="text-lg text-muted-foreground max-w-xl"
+              data-testid="text-hero-subtitle"
+            >
+              We craft high-performing web and app experiences using a simple palette:
+              confident navy, crisp white, and purposeful black. Every engagement pairs
+              strategy, design, engineering, and ongoing optimisation.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link href="/contact">
+                <Button
+                  size="lg"
+                  className="bg-primary text-primary-foreground hover:bg-primary/90"
+                  data-testid="button-hero-consultation"
+                >
+                  Start a project
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+              <Link href="/work">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-foreground/20 text-foreground hover:bg-foreground/5"
+                  data-testid="button-view-work"
+                >
+                  View our work
+                </Button>
+              </Link>
+            </div>
+            <div className="flex flex-wrap gap-8 text-sm text-muted-foreground">
+              {heroHighlights.map((highlight) => (
+                <div key={highlight}>
+                  <p className="text-2xl font-semibold text-foreground mb-1">•</p>
+                  {highlight}
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="flex flex-wrap justify-center gap-3 text-sm text-white/80">
-            {heroHighlights.map((highlight) => (
-              <span
-                key={highlight}
-                className="rounded-full border border-white/20 px-4 py-1 backdrop-blur-sm bg-white/10"
-              >
-                {highlight}
-              </span>
-            ))}
+
+          <div className="relative">
+            <div className="rounded-[32px] border border-border bg-card shadow-lg p-8 space-y-6">
+              <div className="flex items-center justify-between">
+                <span className="text-sm font-semibold text-muted-foreground uppercase tracking-[0.4em]">
+                  Delivery snapshot
+                </span>
+                <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
+                  Live
+                </span>
+              </div>
+              <div className="space-y-6">
+                <div>
+                  <p className="text-sm text-muted-foreground">Active initiatives</p>
+                  <p className="text-4xl font-display text-foreground">08</p>
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="rounded-2xl border border-border p-4">
+                    <p className="text-xs text-muted-foreground uppercase tracking-[0.3em] mb-2">
+                      Avg. sprint velocity
+                    </p>
+                    <p className="text-2xl font-semibold text-primary">34 pts</p>
+                  </div>
+                  <div className="rounded-2xl border border-border p-4">
+                    <p className="text-xs text-muted-foreground uppercase tracking-[0.3em] mb-2">
+                      Launch cadence
+                    </p>
+                    <p className="text-2xl font-semibold text-primary">2 wks</p>
+                  </div>
+                </div>
+                <div className="rounded-2xl border border-border p-4 space-y-3">
+                  <p className="text-sm font-semibold text-foreground flex items-center gap-2">
+                    <Building2 className="h-4 w-4 text-primary" />
+                    Current industries
+                  </p>
+                  <div className="flex flex-wrap gap-2 text-xs text-muted-foreground">
+                    {["Fintech", "Healthcare", "Hospitality", "AI tooling"].map((item) => (
+                      <span
+                        key={item}
+                        className="rounded-full border border-border px-3 py-1"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white py-16">
+      <section className="bg-primary text-primary-foreground py-14">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {stats.map((stat) => (
             <div
               key={stat.label}
-              className="rounded-2xl border border-white/15 bg-white/10 backdrop-blur-md p-6 flex flex-col gap-3"
+              className="rounded-2xl border border-white/20 bg-white/10 p-6 flex flex-col gap-3"
             >
-              <stat.icon className="h-6 w-6 text-primary" />
+              <stat.icon className="h-6 w-6" />
               <div className="text-4xl font-display font-bold">{stat.value}</div>
-              <p className="text-sm uppercase tracking-widest text-white/70">
+              <p className="text-sm uppercase tracking-widest text-white/80">
                 {stat.label}
               </p>
               <p className="text-sm text-white/80">{stat.detail}</p>
@@ -430,7 +468,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-br from-primary to-indigo-500 text-primary-foreground">
+      <section className="py-20 bg-primary text-primary-foreground">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-display text-4xl sm:text-5xl font-semibold mb-6" data-testid="text-cta-title">
             Ready to Build Something Amazing?
