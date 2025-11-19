@@ -17,7 +17,7 @@ export const pricingPackages = [
   {
     id: "website-basic",
     name: "Website - Basic",
-    price: "$2,500",
+    price: "KES 375,000",
     description: "Perfect for small businesses and startups",
     category: "website" as const,
     featured: false,
@@ -34,7 +34,7 @@ export const pricingPackages = [
   {
     id: "website-pro",
     name: "Website - Professional",
-    price: "$5,000",
+    price: "KES 750,000",
     description: "Advanced features for growing businesses",
     category: "website" as const,
     featured: true,
@@ -93,7 +93,7 @@ export const pricingPackages = [
     category: "additional" as const,
     featured: false,
     features: [
-      "Monthly maintenance - from $200/mo",
+      "Monthly maintenance - from KES 30,000/mo",
       "Hosting & domain management",
       "Content updates",
       "Performance monitoring",

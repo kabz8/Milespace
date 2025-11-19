@@ -38,6 +38,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/services" className="text-sm text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-services">
+                  Services
+                </Link>
+              </li>
+              <li>
                 <Link href="/about" className="text-sm text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-about">
                   About Us
                 </Link>

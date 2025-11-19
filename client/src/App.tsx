@@ -10,6 +10,7 @@ import { Footer } from "@/components/footer";
 import Home from "@/pages/home";
 import Work from "@/pages/work";
 import About from "@/pages/about";
+import Services from "@/pages/services";
 import Contact from "@/pages/contact";
 import Pricing from "@/pages/pricing";
 import PricingDetail from "@/pages/pricing-detail";
@@ -25,6 +26,7 @@ function Router() {
           <Route path="/" component={Home} />
           <Route path="/work" component={Work} />
           <Route path="/about" component={About} />
+          <Route path="/services" component={Services} />
           <Route path="/contact" component={Contact} />
           <Route path="/pricing" component={Pricing} />
           <Route path="/pricing/share/:linkId" component={PricingShareDetail} />
