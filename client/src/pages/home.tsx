@@ -5,14 +5,19 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import {
+  Activity,
   ArrowRight,
-  Code,
-  Smartphone,
-  Lightbulb,
+  Building2,
   CheckCircle,
   AlertCircle,
+  Code,
+  Globe,
+  Lightbulb,
   Quote,
+  ShieldCheck,
+  Smartphone,
   Sparkles,
+  Users,
 } from "lucide-react";
 import { type Project } from "@shared/schema";
 import heroImage from "@assets/generated_images/Hero_workspace_tech_scene_81addf33.png";
@@ -129,6 +134,60 @@ export default function Home() {
     "Growth Experiments",
   ];
 
+  const stats = [
+    {
+      icon: Globe,
+      value: "120+",
+      label: "Launches worldwide",
+      detail: "Fintech, retail, health, and media",
+    },
+    {
+      icon: Users,
+      value: "30+",
+      label: "Cross-functional experts",
+      detail: "Product, design, and engineering",
+    },
+    {
+      icon: ShieldCheck,
+      value: "99.9%",
+      label: "Uptime targets",
+      detail: "Backed by automated QA suites",
+    },
+    {
+      icon: Activity,
+      value: "4.8/5",
+      label: "Client happiness",
+      detail: "Measuring NPS each release",
+    },
+  ];
+
+  const processSteps = [
+    {
+      title: "1 · Insight",
+      description:
+        "Rapid research, user interviews, and product strategy to align outcomes.",
+      icon: Lightbulb,
+    },
+    {
+      title: "2 · Design",
+      description:
+        "Experience design, prototyping, and design systems tailored to your brand.",
+      icon: Sparkles,
+    },
+    {
+      title: "3 · Build",
+      description:
+        "Agile sprints, automated testing, and collaborative demos every week.",
+      icon: Code,
+    },
+    {
+      title: "4 · Launch & Grow",
+      description:
+        "Observability, experimentation, and optimisation once your product ships.",
+      icon: Activity,
+    },
+  ];
+
   return (
     <div className="min-h-screen flex flex-col">
       <section className="relative h-[85vh] flex items-center justify-center overflow-hidden bg-slate-950 text-white">
@@ -192,6 +251,24 @@ export default function Home() {
               </span>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white py-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {stats.map((stat) => (
+            <div
+              key={stat.label}
+              className="rounded-2xl border border-white/15 bg-white/10 backdrop-blur-md p-6 flex flex-col gap-3"
+            >
+              <stat.icon className="h-6 w-6 text-primary" />
+              <div className="text-4xl font-display font-bold">{stat.value}</div>
+              <p className="text-sm uppercase tracking-widest text-white/70">
+                {stat.label}
+              </p>
+              <p className="text-sm text-white/80">{stat.detail}</p>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -321,6 +398,33 @@ export default function Home() {
                   <p className="text-sm text-muted-foreground">{testimonial.role}</p>
                 </div>
               </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-card">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <h2 className="font-display text-4xl sm:text-5xl font-semibold mb-4">
+              How we partner with you
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Transparent phases, measurable milestones, and a team that feels in-house from day one.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {processSteps.map((step) => (
+              <div
+                key={step.title}
+                className="rounded-2xl border border-border bg-background/60 p-6 shadow-sm hover-elevate active-elevate-2 transition-all"
+              >
+                <step.icon className="h-8 w-8 text-primary mb-4" />
+                <p className="font-display text-lg font-semibold mb-2">
+                  {step.title}
+                </p>
+                <p className="text-sm text-muted-foreground">{step.description}</p>
+              </div>
             ))}
           </div>
         </div>

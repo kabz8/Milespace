@@ -17,7 +17,7 @@ export const pricingPackages = [
   {
     id: "website-basic",
     name: "Website - Basic",
-    price: "KES 185,000",
+    price: "KES 70,000",
     description: "Perfect for small businesses and startups",
     category: "website" as const,
     featured: false,
