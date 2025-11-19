@@ -17,7 +17,7 @@ export const pricingPackages = [
   {
     id: "website-basic",
     name: "Website - Basic",
-    price: "KES 70,000",
+    price: "KES 50,000",
     description: "Perfect for small businesses and startups",
     category: "website" as const,
     featured: false,
@@ -34,7 +34,7 @@ export const pricingPackages = [
   {
     id: "website-pro",
     name: "Website - Professional",
-    price: "KES 365,000",
+    price: "KES 80,000",
     description: "Advanced features for growing businesses",
     category: "website" as const,
     featured: true,
@@ -46,13 +46,13 @@ export const pricingPackages = [
       "API integrations",
       "Advanced SEO & analytics",
       "5 rounds of revisions",
-      "6 months support",
+      "3 months support",
     ],
   },
   {
     id: "website-enterprise",
     name: "Website - Enterprise",
-    price: "Custom Quote",
+    price: "KES 100,000",
     description: "Full-scale solutions for large organizations",
     category: "website" as const,
     featured: false,
@@ -64,7 +64,7 @@ export const pricingPackages = [
       "Performance optimization",
       "Dedicated project manager",
       "Unlimited revisions",
-      "12 months support",
+      "3 months support",
     ],
   },
   {
