@@ -47,6 +47,7 @@ export class MemStorage implements IStorage {
         imageUrl: "/assets/ecommerce.png",
         tags: ["React", "Node.js", "Stripe", "MongoDB"],
         featured: true,
+        website: "https://retailco.example.com",
       },
       {
         title: "Mobile Banking Application",
@@ -56,6 +57,7 @@ export class MemStorage implements IStorage {
         imageUrl: "/assets/banking.png",
         tags: ["React Native", "Firebase", "Security"],
         featured: true,
+        website: "https://financehub.example.com",
       },
       {
         title: "Restaurant Booking System",
@@ -65,6 +67,7 @@ export class MemStorage implements IStorage {
         imageUrl: "/assets/restaurant.png",
         tags: ["Vue.js", "Express", "PostgreSQL"],
         featured: true,
+        website: "https://dineeasy.example.com",
       },
     ];
 

@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
+import { FloatingContact } from "@/components/floating-contact";
 
 import Home from "@/pages/home";
 import Work from "@/pages/work";
@@ -15,6 +16,7 @@ import Contact from "@/pages/contact";
 import Pricing from "@/pages/pricing";
 import PricingDetail from "@/pages/pricing-detail";
 import PricingShareDetail from "@/pages/pricing-share-detail";
+import ProjectDetail from "@/pages/project-detail";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -25,6 +27,7 @@ function Router() {
         <Switch>
           <Route path="/" component={Home} />
           <Route path="/work" component={Work} />
+          <Route path="/work/:projectId" component={ProjectDetail} />
           <Route path="/about" component={About} />
           <Route path="/services" component={Services} />
           <Route path="/contact" component={Contact} />
@@ -46,6 +49,7 @@ function App() {
         <TooltipProvider>
           <Toaster />
           <Router />
+          <FloatingContact />
         </TooltipProvider>
       </ThemeProvider>
     </QueryClientProvider>

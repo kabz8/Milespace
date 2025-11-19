@@ -9,7 +9,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-card border-t mt-auto">
+    <footer className="bg-primary text-primary-foreground border-t mt-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
           <div className="space-y-4">
@@ -20,7 +20,7 @@ export function Footer() {
                 className="h-24 w-auto drop-shadow-sm"
                 data-testid="img-footer-logo"
               />
-              <p className="text-sm text-muted-foreground max-w-xs">
+              <p className="text-sm text-primary-foreground/80 max-w-xs">
                 Premium software development partner delivering global digital experiences from strategy to launch.
               </p>
             </div>
@@ -30,27 +30,27 @@ export function Footer() {
             <h3 className="font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/" className="text-sm text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-home">
+                <Link href="/" className="text-sm text-primary-foreground/80 hover:text-white transition-colors" data-testid="link-footer-home">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/work" className="text-sm text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-work">
+                <Link href="/work" className="text-sm text-primary-foreground/80 hover:text-white transition-colors" data-testid="link-footer-work">
                   Our Work
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="text-sm text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-services">
+                <Link href="/services" className="text-sm text-primary-foreground/80 hover:text-white transition-colors" data-testid="link-footer-services">
                   Services
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="text-sm text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-about">
+                <Link href="/about" className="text-sm text-primary-foreground/80 hover:text-white transition-colors" data-testid="link-footer-about">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="/pricing" className="text-sm text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-pricing">
+                <Link href="/pricing" className="text-sm text-primary-foreground/80 hover:text-white transition-colors" data-testid="link-footer-pricing">
                   Pricing
                 </Link>
               </li>
@@ -59,7 +59,7 @@ export function Footer() {
 
           <div>
             <h3 className="font-semibold mb-4">Services</h3>
-            <ul className="space-y-2 text-sm text-muted-foreground">
+            <ul className="space-y-2 text-sm text-primary-foreground/80">
               <li>Website Development</li>
               <li>Software Development</li>
               <li>Mobile Applications</li>
@@ -70,19 +70,19 @@ export function Footer() {
           <div>
             <h3 className="font-semibold mb-4">Contact</h3>
             <ul className="space-y-3">
-              <li className="flex items-center gap-2 text-sm text-muted-foreground">
+              <li className="flex items-center gap-2 text-sm text-primary-foreground/80">
                 <Phone className="h-4 w-4" />
-                <a href="tel:0720176247" className="hover:text-foreground transition-colors" data-testid="link-footer-phone">
+                <a href="tel:0720176247" className="hover:text-white transition-colors" data-testid="link-footer-phone">
                   0720 176 247
                 </a>
               </li>
-              <li className="flex items-center gap-2 text-sm text-muted-foreground">
+              <li className="flex items-center gap-2 text-sm text-primary-foreground/80">
                 <Mail className="h-4 w-4" />
-                <a href="mailto:hello@milespace.co.ke" className="hover:text-foreground transition-colors" data-testid="link-footer-email">
+                <a href="mailto:hello@milespace.co.ke" className="hover:text-white transition-colors" data-testid="link-footer-email">
                   hello@milespace.co.ke
                 </a>
               </li>
-              <li className="flex items-center gap-2 text-sm text-muted-foreground">
+              <li className="flex items-center gap-2 text-sm text-primary-foreground/80">
                 <MapPin className="h-4 w-4" />
                 <span data-testid="text-footer-location">Global delivery across Africa, Europe, and beyond</span>
               </li>
@@ -90,7 +90,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t mt-8 pt-8 text-center text-sm text-muted-foreground">
+        <div className="border-t border-white/20 mt-8 pt-8 text-center text-sm text-primary-foreground/80">
           <p data-testid="text-copyright">
             © {currentYear} Milespace. All rights reserved.
           </p>

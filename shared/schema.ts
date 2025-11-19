@@ -10,6 +10,7 @@ export const projectSchema = z.object({
   imageUrl: z.string(),
   tags: z.array(z.string()),
   featured: z.boolean(),
+  website: z.string().url().optional(),
 });
 
 export const insertProjectSchema = projectSchema.omit({ id: true });

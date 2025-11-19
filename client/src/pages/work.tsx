@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -33,6 +34,7 @@ const fallbackProjects: Project[] = [
     imageUrl: "/assets/ecommerce.png",
     tags: ["Next.js", "Postgres", "Stripe"],
     featured: true,
+    website: "https://example.com/marketplace",
   },
   {
     id: "fallback-mobile-wallet",
@@ -43,6 +45,7 @@ const fallbackProjects: Project[] = [
     imageUrl: "/assets/mobile.png",
     tags: ["React Native", "GraphQL"],
     featured: true,
+    website: "https://example.com/wallet",
   },
   {
     id: "fallback-health",
@@ -53,6 +56,7 @@ const fallbackProjects: Project[] = [
     imageUrl: "/assets/health.png",
     tags: ["Vue", "Supabase"],
     featured: true,
+    website: "https://example.com/telehealth",
   },
   {
     id: "fallback-education",
@@ -63,6 +67,7 @@ const fallbackProjects: Project[] = [
     imageUrl: "/assets/education.png",
     tags: ["React", "NestJS"],
     featured: true,
+    website: "https://example.com/lms",
   },
 ];
 
@@ -146,46 +151,47 @@ export default function Work() {
               </div>
             ) : (
               filteredProjects.map((project) => (
-                <Card
-                  key={project.id}
-                  className="overflow-hidden hover-elevate active-elevate-2 group cursor-pointer transition-all duration-300"
-                  data-testid={`card-project-${project.id}`}
-                >
-                  <div className="relative overflow-hidden aspect-[4/3]">
-                    <img
-                      src={projectImages[project.category] || ecommerceProject}
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                      data-testid={`img-project-${project.id}`}
-                    />
-                  </div>
-                  <CardContent className="p-6">
-                    <Badge className="mb-3 capitalize" data-testid={`badge-category-${project.id}`}>
-                      {project.category}
-                    </Badge>
-                    <h3 className="font-semibold text-xl mb-2" data-testid={`text-project-title-${project.id}`}>
-                      {project.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground mb-3">
-                      Client: {project.client}
-                    </p>
-                    <p className="text-muted-foreground mb-4">
-                      {project.description}
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {project.tags.map((tag, index) => (
-                        <Badge
-                          key={index}
-                          variant="secondary"
-                          className="text-xs"
-                          data-testid={`badge-tag-${project.id}-${index}`}
-                        >
-                          {tag}
-                        </Badge>
-                      ))}
+                <Link key={project.id} href={`/work/${project.id}`}>
+                  <Card
+                    className="overflow-hidden hover-elevate active-elevate-2 group cursor-pointer transition-all duration-300"
+                    data-testid={`card-project-${project.id}`}
+                  >
+                    <div className="relative overflow-hidden aspect-[4/3]">
+                      <img
+                        src={projectImages[project.category] || ecommerceProject}
+                        alt={project.title}
+                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        data-testid={`img-project-${project.id}`}
+                      />
                     </div>
-                  </CardContent>
-                </Card>
+                    <CardContent className="p-6">
+                      <Badge className="mb-3 capitalize" data-testid={`badge-category-${project.id}`}>
+                        {project.category}
+                      </Badge>
+                      <h3 className="font-semibold text-xl mb-2" data-testid={`text-project-title-${project.id}`}>
+                        {project.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground mb-3">
+                        Client: {project.client}
+                      </p>
+                      <p className="text-muted-foreground mb-4">
+                        {project.description}
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {project.tags.map((tag, index) => (
+                          <Badge
+                            key={index}
+                            variant="secondary"
+                            className="text-xs"
+                            data-testid={`badge-tag-${project.id}-${index}`}
+                          >
+                            {tag}
+                          </Badge>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
               ))
             )}
           </div>
