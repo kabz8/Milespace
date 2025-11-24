@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
+import { getFallbackProject } from "@/data/projects";
 
 const WEBSITE_FALLBACK = "https://milespace.co";
 
@@ -18,7 +19,10 @@ export default function ProjectDetail() {
     enabled: Boolean(projectId),
   });
 
-  if (isLoading) {
+  const fallbackProject = getFallbackProject(projectId);
+  const resolvedProject = project ?? fallbackProject;
+
+  if (isLoading && !resolvedProject) {
     return (
       <div className="min-h-screen pt-24 px-4">
         <div className="max-w-5xl mx-auto space-y-6">
@@ -31,7 +35,7 @@ export default function ProjectDetail() {
     );
   }
 
-  if (error || !project) {
+  if (!resolvedProject) {
     return (
       <div className="min-h-screen pt-24 flex items-center justify-center">
         <Card className="max-w-md w-full">
@@ -52,7 +56,7 @@ export default function ProjectDetail() {
     );
   }
 
-  const websiteUrl = project.website || WEBSITE_FALLBACK;
+  const websiteUrl = resolvedProject.website || WEBSITE_FALLBACK;
 
   return (
     <div className="min-h-screen pt-24 pb-16">
@@ -65,17 +69,17 @@ export default function ProjectDetail() {
             </Button>
           </Link>
           <div className="space-y-4">
-            <Badge className="capitalize">{project.category}</Badge>
+            <Badge className="capitalize">{resolvedProject.category}</Badge>
             <h1 className="font-display text-4xl sm:text-5xl font-bold">
-              {project.title}
+              {resolvedProject.title}
             </h1>
             <p className="text-lg text-muted-foreground max-w-3xl">
-              {project.description}
+              {resolvedProject.description}
             </p>
             <div className="flex flex-wrap gap-3 text-sm text-muted-foreground">
               <span className="inline-flex items-center gap-2">
                 <Globe2 className="h-4 w-4 text-primary" />
-                {project.client}
+                {resolvedProject.client}
               </span>
               <span className="inline-flex items-center gap-2">
                 <Clock className="h-4 w-4 text-primary" />
@@ -100,8 +104,8 @@ export default function ProjectDetail() {
           <div className="relative rounded-[28px] overflow-hidden bg-muted min-h-[320px] flex items-center justify-center">
             <Loader2 className="h-10 w-10 text-muted-foreground animate-spin" />
             <img
-              src={project.imageUrl}
-              alt={project.title}
+              src={resolvedProject.imageUrl}
+              alt={resolvedProject.title}
               className="absolute inset-0 w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-black/50" />
@@ -118,7 +122,7 @@ export default function ProjectDetail() {
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
-              {project.tags.map((tag) => (
+              {resolvedProject.tags.map((tag) => (
                 <Badge key={tag} variant="secondary" className="px-3 py-1">
                   {tag}
                 </Badge>

@@ -124,7 +124,7 @@ export default function Home() {
       <section className="pt-28 pb-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 text-left">
-            <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1 text-xs font-semibold uppercase tracking-[0.4em] text-primary">
+            <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1 text-xs font-semibold text-primary">
               Milespace • Product Studio
             </span>
             <h1
@@ -164,7 +164,7 @@ export default function Home() {
               {heroStats.map((stat) => (
                 <Card key={stat.label} className="p-4 text-left shadow-sm">
                   <div className="text-3xl font-display text-foreground">{stat.value}</div>
-                  <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground mt-1">{stat.label}</p>
+                  <p className="text-xs text-muted-foreground mt-1">{stat.label}</p>
                 </Card>
               ))}
             </div>
@@ -172,16 +172,16 @@ export default function Home() {
 
           <div className="grid gap-4">
             <div className="rounded-[32px] border border-border bg-primary text-primary-foreground p-8 space-y-4 shadow-lg">
-              <p className="text-sm uppercase tracking-[0.4em] opacity-80">Live snapshot</p>
+              <p className="text-sm font-semibold opacity-80">Live snapshot</p>
               <h3 className="text-4xl font-display">08 active builds</h3>
               <p className="opacity-80">Commerce, fintech, and SaaS platforms shipping with our embedded squads right now.</p>
               <div className="grid grid-cols-2 gap-4 text-sm">
                 <div>
-                  <p className="uppercase tracking-[0.3em] text-xs opacity-80">Velocity</p>
+                  <p className="text-xs font-semibold opacity-80">Velocity</p>
                   <p className="text-2xl font-semibold">34 pts</p>
                 </div>
                 <div>
-                  <p className="uppercase tracking-[0.3em] text-xs opacity-80">Launch cadence</p>
+                  <p className="text-xs font-semibold opacity-80">Launch cadence</p>
                   <p className="text-2xl font-semibold">2 weeks</p>
                 </div>
               </div>

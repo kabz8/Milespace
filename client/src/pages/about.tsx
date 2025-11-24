@@ -80,7 +80,7 @@ export default function About() {
       <section className="bg-gradient-to-br from-primary via-[#0f2a45] to-black text-primary-foreground">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
-            <Badge className="bg-white/10 text-white border-white/20 uppercase tracking-[0.4em]">
+            <Badge className="bg-white/10 text-white border-white/20 font-semibold">
               About Milespace
             </Badge>
             <h1 className="font-display text-4xl sm:text-5xl font-semibold leading-tight" data-testid="text-about-title">

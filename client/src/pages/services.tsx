@@ -127,7 +127,6 @@ export default function Services() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row items-start justify-between gap-10 mb-16">
             <div className="max-w-3xl">
-              <Badge className="mb-4 bg-primary/10 text-primary border-primary/40">Detailed service menu</Badge>
               <h2 className="font-display text-4xl sm:text-5xl font-semibold mb-4">What we deliver — in detail</h2>
               <p className="text-lg text-muted-foreground">
                 Pick the craft you need and see exactly what is included. Every service comes with embedded product leadership,
@@ -145,17 +144,15 @@ export default function Services() {
               <Card key={service.id} className="p-8 hover-elevate active-elevate-2 transition-all">
                 <div className="grid gap-8 lg:grid-cols-[2fr,1fr]">
                   <div>
-                    <div className="flex flex-wrap items-center gap-3 mb-4">
-                      <Badge variant="secondary" className="text-xs uppercase tracking-[0.2em]">
-                        {service.typicalTimeline}
-                      </Badge>
-                      <span className="text-sm text-muted-foreground">Starts {service.startPrice}</span>
+                    <div className="flex flex-wrap items-center gap-3 mb-4 text-sm text-muted-foreground">
+                      <span>{service.typicalTimeline}</span>
+                      <span>Starts {service.startPrice}</span>
                     </div>
                     <h3 className="font-display text-3xl font-semibold mb-3">{service.name}</h3>
                     <p className="text-muted-foreground mb-6">{service.description}</p>
                     <div className="grid gap-6 md:grid-cols-2">
                       <div>
-                        <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Best for</p>
+                        <p className="text-sm font-semibold text-foreground mb-3">Best for</p>
                         <ul className="space-y-3 text-sm text-muted-foreground">
                           {service.bestFor.slice(0, 3).map((item) => (
                             <li key={item} className="flex gap-2">
@@ -166,7 +163,7 @@ export default function Services() {
                         </ul>
                       </div>
                       <div>
-                        <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Included deliverables</p>
+                        <p className="text-sm font-semibold text-foreground mb-3">Included deliverables</p>
                         <ul className="space-y-3 text-sm text-muted-foreground">
                           {service.deliverables.slice(0, 3).map((item) => (
                             <li key={item} className="flex gap-2">
@@ -180,7 +177,7 @@ export default function Services() {
                   </div>
                   <div className="border-t lg:border-t-0 lg:border-l border-border/60 pt-6 lg:pt-0 lg:pl-8 flex flex-col justify-between">
                     <div>
-                      <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Measured outcomes</p>
+                      <p className="text-sm font-semibold text-foreground mb-3">Measured outcomes</p>
                       <ul className="space-y-3 text-sm text-muted-foreground">
                         {service.outcomes.slice(0, 4).map((outcome) => (
                           <li key={outcome} className="flex gap-2">
@@ -223,7 +220,7 @@ export default function Services() {
             {clientSpotlights.map(({ serviceId, serviceName, client }) => (
               <Card key={`${serviceId}-${client.name}`} className="p-6 flex flex-col gap-4 hover-elevate transition-all">
                 <div className="space-y-1">
-                  <Badge variant="outline" className="text-xs uppercase tracking-[0.2em]">
+                  <Badge variant="outline" className="text-xs font-medium">
                     {serviceName}
                   </Badge>
                   <h3 className="text-xl font-semibold">{client.name}</h3>
@@ -297,7 +294,7 @@ export default function Services() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {deliveryProcess.map((step) => (
               <Card key={step.title} className="p-6 border-dashed">
-                <CardTitle className="mb-3 text-primary font-semibold tracking-wide">{step.title}</CardTitle>
+                <CardTitle className="mb-3 text-primary font-semibold">{step.title}</CardTitle>
                 <CardDescription className="text-base">{step.description}</CardDescription>
               </Card>
             ))}
@@ -310,7 +307,7 @@ export default function Services() {
           <Card className="p-8">
             <div className="flex items-center gap-3 mb-6">
               <Globe className="h-6 w-6 text-primary" />
-              <span className="text-sm uppercase tracking-[0.2em] text-muted-foreground">Industries</span>
+              <span className="text-sm font-semibold text-muted-foreground">Industries</span>
             </div>
             <h3 className="font-display text-3xl font-semibold mb-6">
               Built for global markets
@@ -328,7 +325,7 @@ export default function Services() {
           <Card className="p-8 bg-primary text-primary-foreground">
             <div className="flex items-center gap-3 mb-6">
               <Workflow className="h-6 w-6" />
-              <span className="text-sm uppercase tracking-[0.2em] opacity-80">Partnership</span>
+              <span className="text-sm font-semibold opacity-80">Partnership</span>
             </div>
             <h3 className="font-display text-3xl font-semibold mb-6">
               What working with Milespace feels like
