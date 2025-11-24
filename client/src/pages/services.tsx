@@ -1,6 +1,5 @@
 import { Link } from "wouter";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   ArrowRight,
@@ -98,9 +97,6 @@ export default function Services() {
       <section className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 text-white">
         <div className="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_top,_rgba(56,189,248,0.35),_transparent_45%)]" />
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-          <Badge variant="secondary" className="mb-6 bg-white/10 text-white border-white/20">
-            End-to-end delivery
-          </Badge>
           <h1 className="font-display text-5xl sm:text-6xl font-bold mb-6 max-w-3xl">
             Services built for ambitious global brands
           </h1>
@@ -144,40 +140,30 @@ export default function Services() {
               <Card key={service.id} className="p-8 hover-elevate active-elevate-2 transition-all">
                 <div className="grid gap-8 lg:grid-cols-[2fr,1fr]">
                   <div>
-                    <div className="flex flex-wrap items-center gap-3 mb-4 text-sm text-muted-foreground">
-                      <span>{service.typicalTimeline}</span>
-                      <span>Starts {service.startPrice}</span>
-                    </div>
+                    <p className="text-sm text-muted-foreground mb-4">{service.typicalTimeline}</p>
                     <h3 className="font-display text-3xl font-semibold mb-3">{service.name}</h3>
                     <p className="text-muted-foreground mb-6">{service.description}</p>
                     <div className="grid gap-6 md:grid-cols-2">
-                      <div>
-                        <p className="text-sm font-semibold text-foreground mb-3">Best for</p>
-                        <ul className="space-y-3 text-sm text-muted-foreground">
-                          {service.bestFor.slice(0, 3).map((item) => (
-                            <li key={item} className="flex gap-2">
-                              <LineChart className="h-4 w-4 text-primary mt-0.5" />
-                              <span>{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      <div>
-                        <p className="text-sm font-semibold text-foreground mb-3">Included deliverables</p>
-                        <ul className="space-y-3 text-sm text-muted-foreground">
-                          {service.deliverables.slice(0, 3).map((item) => (
-                            <li key={item} className="flex gap-2">
-                              <CheckCircle className="h-4 w-4 text-primary mt-0.5" />
-                              <span>{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+                      <ul className="space-y-3 text-sm text-muted-foreground">
+                        {service.bestFor.slice(0, 3).map((item) => (
+                          <li key={item} className="flex gap-2">
+                            <LineChart className="h-4 w-4 text-primary mt-0.5" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      <ul className="space-y-3 text-sm text-muted-foreground">
+                        {service.deliverables.slice(0, 3).map((item) => (
+                          <li key={item} className="flex gap-2">
+                            <CheckCircle className="h-4 w-4 text-primary mt-0.5" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
                   <div className="border-t lg:border-t-0 lg:border-l border-border/60 pt-6 lg:pt-0 lg:pl-8 flex flex-col justify-between">
                     <div>
-                      <p className="text-sm font-semibold text-foreground mb-3">Measured outcomes</p>
                       <ul className="space-y-3 text-sm text-muted-foreground">
                         {service.outcomes.slice(0, 4).map((outcome) => (
                           <li key={outcome} className="flex gap-2">
@@ -220,9 +206,6 @@ export default function Services() {
             {clientSpotlights.map(({ serviceId, serviceName, client }) => (
               <Card key={`${serviceId}-${client.name}`} className="p-6 flex flex-col gap-4 hover-elevate transition-all">
                 <div className="space-y-1">
-                  <Badge variant="outline" className="text-xs font-medium">
-                    {serviceName}
-                  </Badge>
                   <h3 className="text-xl font-semibold">{client.name}</h3>
                   <p className="text-sm text-muted-foreground">{client.industry}</p>
                 </div>
@@ -263,10 +246,7 @@ export default function Services() {
             {appBundles.map((bundle) => (
               <Card key={bundle.title} className="p-8 flex flex-col gap-6 hover-elevate active-elevate-2 transition-all">
                 <bundle.icon className="h-10 w-10 text-primary" />
-                <div>
-                  <CardTitle className="text-2xl mb-2">{bundle.title}</CardTitle>
-                  <p className="text-primary font-semibold">{bundle.price}</p>
-                </div>
+                <CardTitle className="text-2xl">{bundle.title}</CardTitle>
                 <CardDescription className="text-base">{bundle.description}</CardDescription>
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   {bundle.items.map((item) => (
@@ -305,10 +285,7 @@ export default function Services() {
       <section className="py-20 bg-background">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12">
           <Card className="p-8">
-            <div className="flex items-center gap-3 mb-6">
-              <Globe className="h-6 w-6 text-primary" />
-              <span className="text-sm font-semibold text-muted-foreground">Industries</span>
-            </div>
+            <Globe className="h-6 w-6 text-primary mb-6" />
             <h3 className="font-display text-3xl font-semibold mb-6">
               Built for global markets
             </h3>
@@ -323,10 +300,7 @@ export default function Services() {
           </Card>
 
           <Card className="p-8 bg-primary text-primary-foreground">
-            <div className="flex items-center gap-3 mb-6">
-              <Workflow className="h-6 w-6" />
-              <span className="text-sm font-semibold opacity-80">Partnership</span>
-            </div>
+            <Workflow className="h-6 w-6 mb-6" />
             <h3 className="font-display text-3xl font-semibold mb-6">
               What working with Milespace feels like
             </h3>

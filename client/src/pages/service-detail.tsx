@@ -66,9 +66,6 @@ export default function ServiceDetail({ params }: ServiceDetailProps) {
               Back to services
             </Button>
           </Link>
-          <Badge variant="outline" className="mb-4">
-            Service detail
-          </Badge>
           <h1 className="font-display text-4xl sm:text-5xl font-semibold mb-4">{service.name}</h1>
           <p className="text-lg text-muted-foreground max-w-3xl mb-8">{service.description}</p>
           <div className="grid gap-4 md:grid-cols-3">
@@ -76,12 +73,6 @@ export default function ServiceDetail({ params }: ServiceDetailProps) {
               <CardHeader>
                 <CardTitle className="text-sm font-semibold text-muted-foreground">Kick-off to launch</CardTitle>
                 <CardDescription className="text-2xl font-semibold text-foreground">{service.typicalTimeline}</CardDescription>
-              </CardHeader>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-sm font-semibold text-muted-foreground">Engagement start</CardTitle>
-                <CardDescription className="text-2xl font-semibold text-foreground">{service.startPrice}</CardDescription>
               </CardHeader>
             </Card>
             <Card>
@@ -98,7 +89,6 @@ export default function ServiceDetail({ params }: ServiceDetailProps) {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-8 lg:grid-cols-[3fr,2fr]">
           <Card className="p-8 space-y-8">
             <div>
-              <p className="text-sm font-semibold text-muted-foreground mb-3">What&apos;s included</p>
               <h2 className="text-3xl font-semibold mb-4">Deliverables & outcomes</h2>
               <p className="text-muted-foreground">
                 Every engagement is staffed with a product lead, senior engineers, UX, and QA. Here is the tangible work you receive.
@@ -106,7 +96,7 @@ export default function ServiceDetail({ params }: ServiceDetailProps) {
             </div>
             <div className="grid gap-6 md:grid-cols-2">
               <div>
-                <h3 className="text-sm text-muted-foreground font-semibold mb-3">Deliverables</h3>
+                <h3 className="text-xl font-semibold mb-3">Deliverables</h3>
                 <ul className="space-y-3 text-sm text-muted-foreground">
                   {service.deliverables.map((deliverable) => (
                     <li key={deliverable} className="flex gap-2">
@@ -117,7 +107,7 @@ export default function ServiceDetail({ params }: ServiceDetailProps) {
                 </ul>
               </div>
               <div>
-                <h3 className="text-sm text-muted-foreground font-semibold mb-3">Measured outcomes</h3>
+                <h3 className="text-xl font-semibold mb-3">Measured outcomes</h3>
                 <ul className="space-y-3 text-sm text-muted-foreground">
                   {service.outcomes.map((outcome) => (
                     <li key={outcome} className="flex gap-2">
@@ -130,7 +120,7 @@ export default function ServiceDetail({ params }: ServiceDetailProps) {
             </div>
             <Separator />
             <div>
-              <p className="text-sm font-semibold text-muted-foreground mb-3">Preferred stack</p>
+              <h3 className="text-xl font-semibold mb-3">Preferred stack</h3>
               <div className="flex flex-wrap gap-2">
                 {service.stack.map((tech) => (
                   <Badge key={tech} variant="secondary" className="bg-muted text-foreground">
@@ -142,7 +132,6 @@ export default function ServiceDetail({ params }: ServiceDetailProps) {
           </Card>
           <Card className="p-8 bg-primary/5 border-dashed border-primary/30 flex flex-col gap-6">
             <div>
-              <p className="text-sm font-semibold text-muted-foreground mb-2">Ready to turn this on?</p>
               <h3 className="text-2xl font-semibold mb-3">Book or ask for more context</h3>
               <p className="text-sm text-muted-foreground">
                 We reserve two build slots per month. Share your context and we&apos;ll confirm a kickoff date within 24 hours.
@@ -174,7 +163,6 @@ export default function ServiceDetail({ params }: ServiceDetailProps) {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
             <div>
-              <p className="text-sm font-semibold text-muted-foreground mb-2">Clients guided</p>
               <h2 className="text-3xl font-semibold">Who trusts this service</h2>
             </div>
             <p className="text-muted-foreground max-w-2xl">
@@ -185,9 +173,6 @@ export default function ServiceDetail({ params }: ServiceDetailProps) {
             {service.clients.map((client) => (
               <Card key={client.name} className="p-6 space-y-5 hover-elevate transition-all">
                 <div className="flex flex-col gap-1">
-                  <Badge variant="secondary" className="w-fit text-xs font-medium">
-                    {client.industry}
-                  </Badge>
                   <h3 className="text-2xl font-semibold">{client.name}</h3>
                   <p className="text-sm text-muted-foreground">{client.project}</p>
                 </div>
@@ -203,7 +188,7 @@ export default function ServiceDetail({ params }: ServiceDetailProps) {
                 <div className="grid grid-cols-2 gap-4 text-sm text-muted-foreground pt-2 border-t border-border/60">
                   {client.metrics.map((metric) => (
                     <div key={`${client.name}-${metric.label}`}>
-                      <p className="text-xs font-semibold">{metric.label}</p>
+                      <p className="text-sm font-semibold">{metric.label}</p>
                       <p className="text-lg font-semibold text-foreground">{metric.value}</p>
                       {metric.helper && <p className="text-xs">{metric.helper}</p>}
                     </div>
@@ -219,7 +204,6 @@ export default function ServiceDetail({ params }: ServiceDetailProps) {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
             <div>
-              <p className="text-sm font-semibold text-muted-foreground mb-2">Project breakdowns</p>
               <h2 className="text-3xl font-semibold">Recent work from this service</h2>
             </div>
             <p className="text-muted-foreground max-w-2xl">
@@ -232,15 +216,12 @@ export default function ServiceDetail({ params }: ServiceDetailProps) {
                 <div className="grid md:grid-cols-2">
                   <div className="p-8 space-y-5">
                     <div className="flex flex-col gap-1">
-                      <Badge variant="outline" className="w-fit text-xs font-medium">
-                        {project.client}
-                      </Badge>
                       <h3 className="text-2xl font-semibold">{project.title}</h3>
                       <p className="text-sm text-muted-foreground">{project.duration}</p>
                     </div>
                     <p className="text-muted-foreground">{project.description}</p>
                     <div>
-                      <p className="text-sm font-semibold text-muted-foreground mb-2">Key deliverables</p>
+                      <h4 className="text-lg font-semibold text-foreground mb-2">Key deliverables</h4>
                       <ul className="space-y-2 text-sm text-muted-foreground">
                         {project.deliverables.map((deliverable) => (
                           <li key={deliverable} className="flex gap-2">
@@ -251,7 +232,7 @@ export default function ServiceDetail({ params }: ServiceDetailProps) {
                       </ul>
                     </div>
                     <div>
-                      <p className="text-sm font-semibold text-muted-foreground mb-2">Impact</p>
+                      <h4 className="text-lg font-semibold text-foreground mb-2">Impact</h4>
                       <ul className="space-y-2 text-sm text-muted-foreground">
                         {project.impact.map((impactItem) => (
                           <li key={impactItem} className="flex gap-2">
@@ -284,7 +265,6 @@ export default function ServiceDetail({ params }: ServiceDetailProps) {
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
               <div>
-                <p className="text-sm font-semibold text-muted-foreground mb-2">Related services</p>
                 <h2 className="text-3xl font-semibold">Often booked together</h2>
               </div>
               <p className="text-muted-foreground max-w-2xl">
