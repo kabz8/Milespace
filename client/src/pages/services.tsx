@@ -4,46 +4,34 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   ArrowRight,
-  Code,
   Globe,
-  Layers,
   LineChart,
   Rocket,
   Shield,
-  Smartphone,
   Workflow,
   Users,
   CheckCircle,
   Cpu,
   MonitorSmartphone,
+  Smartphone,
 } from "lucide-react";
+import { serviceOfferings } from "@shared/services";
 
-const serviceAreas = [
-  {
-    icon: Code,
-    title: "Web Engineering",
-    description: "Conversion-focused marketing sites, enterprise intranets, and performant PWAs that scale with your traffic.",
-    highlights: ["Next.js / Vite experts", "CMS integrations", "Accessibility-first"],
-  },
-  {
-    icon: Smartphone,
-    title: "App Development",
-    description: "Cross-platform mobile and desktop applications with delightful UX, real-time features, and secure authentication.",
-    highlights: ["React Native & Swift", "Offline-first patterns", "App Store readiness"],
-  },
-  {
-    icon: Layers,
-    title: "Systems & Integrations",
-    description: "Robust APIs, workflow automation, and third-party integrations that keep your business operations flowing.",
-    highlights: ["Scalable architectures", "Payments & ERP", "Telemetry & alerts"],
-  },
-  {
-    icon: LineChart,
-    title: "Data & Analytics",
-    description: "Dashboards, reporting pipelines, and insight layers that help your team make confident decisions.",
-    highlights: ["BI dashboards", "Custom ETL", "Predictive reporting"],
-  },
-];
+const clientSpotlights = serviceOfferings
+  .map((service) => {
+    const client = service.clients[0];
+    if (!client) return null;
+    return {
+      serviceId: service.id,
+      serviceName: service.name,
+      client,
+    };
+  })
+  .filter(Boolean) as {
+    serviceId: string;
+    serviceName: string;
+    client: (typeof serviceOfferings)[number]["clients"][number];
+  }[];
 
 const deliveryProcess = [
   {
@@ -138,10 +126,12 @@ export default function Services() {
       <section className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row items-start justify-between gap-10 mb-16">
-            <div className="max-w-2xl">
-              <h2 className="font-display text-4xl sm:text-5xl font-semibold mb-6">What we deliver</h2>
+            <div className="max-w-3xl">
+              <Badge className="mb-4 bg-primary/10 text-primary border-primary/40">Detailed service menu</Badge>
+              <h2 className="font-display text-4xl sm:text-5xl font-semibold mb-4">What we deliver — in detail</h2>
               <p className="text-lg text-muted-foreground">
-                Each engagement is staffed with senior engineers, designers, and delivery leads. You get transparent communication, secure infrastructure, and rapid feedback loops.
+                Pick the craft you need and see exactly what is included. Every service comes with embedded product leadership,
+                proactive QA, and documentation you can hand over to internal teams.
               </p>
             </div>
             <div className="flex items-center gap-4 text-sm text-muted-foreground">
@@ -150,21 +140,112 @@ export default function Services() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {serviceAreas.map((service) => (
-              <Card key={service.title} className="h-full hover-elevate active-elevate-2 transition-all">
-                <CardHeader>
-                  <service.icon className="h-10 w-10 text-primary mb-4" />
-                  <CardTitle>{service.title}</CardTitle>
-                  <CardDescription>{service.description}</CardDescription>
-                </CardHeader>
-                <CardContent className="flex flex-wrap gap-3">
-                  {service.highlights.map((highlight) => (
-                    <Badge key={highlight} variant="secondary" className="bg-muted text-foreground">
-                      {highlight}
-                    </Badge>
+          <div className="space-y-8">
+            {serviceOfferings.map((service) => (
+              <Card key={service.id} className="p-8 hover-elevate active-elevate-2 transition-all">
+                <div className="grid gap-8 lg:grid-cols-[2fr,1fr]">
+                  <div>
+                    <div className="flex flex-wrap items-center gap-3 mb-4">
+                      <Badge variant="secondary" className="text-xs uppercase tracking-[0.2em]">
+                        {service.typicalTimeline}
+                      </Badge>
+                      <span className="text-sm text-muted-foreground">Starts {service.startPrice}</span>
+                    </div>
+                    <h3 className="font-display text-3xl font-semibold mb-3">{service.name}</h3>
+                    <p className="text-muted-foreground mb-6">{service.description}</p>
+                    <div className="grid gap-6 md:grid-cols-2">
+                      <div>
+                        <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Best for</p>
+                        <ul className="space-y-3 text-sm text-muted-foreground">
+                          {service.bestFor.slice(0, 3).map((item) => (
+                            <li key={item} className="flex gap-2">
+                              <LineChart className="h-4 w-4 text-primary mt-0.5" />
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div>
+                        <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Included deliverables</p>
+                        <ul className="space-y-3 text-sm text-muted-foreground">
+                          {service.deliverables.slice(0, 3).map((item) => (
+                            <li key={item} className="flex gap-2">
+                              <CheckCircle className="h-4 w-4 text-primary mt-0.5" />
+                              <span>{item}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="border-t lg:border-t-0 lg:border-l border-border/60 pt-6 lg:pt-0 lg:pl-8 flex flex-col justify-between">
+                    <div>
+                      <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">Measured outcomes</p>
+                      <ul className="space-y-3 text-sm text-muted-foreground">
+                        {service.outcomes.slice(0, 4).map((outcome) => (
+                          <li key={outcome} className="flex gap-2">
+                            <LineChart className="h-4 w-4 text-primary mt-0.5" />
+                            <span>{outcome}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="flex flex-col gap-3">
+                      <Link href={`/services/${service.id}`}>
+                        <Button className="w-full" variant="default">
+                          View service detail
+                        </Button>
+                      </Link>
+                      <Link href={`/contact?service=${service.id}`}>
+                        <Button variant="outline" className="w-full border-dashed">
+                          Book this service
+                        </Button>
+                      </Link>
+                      <p className="text-xs text-muted-foreground">{service.bookingNote}</p>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-card">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <h2 className="font-display text-4xl font-semibold mb-4">Client proof from each craft</h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Every service has live references. Here is a snapshot of the teams we’ve guided recently and what changed for them.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {clientSpotlights.map(({ serviceId, serviceName, client }) => (
+              <Card key={`${serviceId}-${client.name}`} className="p-6 flex flex-col gap-4 hover-elevate transition-all">
+                <div className="space-y-1">
+                  <Badge variant="outline" className="text-xs uppercase tracking-[0.2em]">
+                    {serviceName}
+                  </Badge>
+                  <h3 className="text-xl font-semibold">{client.name}</h3>
+                  <p className="text-sm text-muted-foreground">{client.industry}</p>
+                </div>
+                <p className="text-sm text-muted-foreground flex-1">{client.summary}</p>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  {client.results.slice(0, 2).map((result) => (
+                    <li key={result} className="flex gap-2">
+                      <CheckCircle className="h-4 w-4 text-primary mt-0.5" />
+                      <span>{result}</span>
+                    </li>
                   ))}
-                </CardContent>
+                </ul>
+                <div className="flex items-center justify-between text-xs text-muted-foreground pt-2 border-t border-border/60">
+                  <span>{client.project}</span>
+                  <Link href={`/services/${serviceId}`}>
+                    <Button variant="ghost" className="h-auto px-0 text-primary text-xs">
+                      View full detail
+                    </Button>
+                  </Link>
+                </div>
               </Card>
             ))}
           </div>

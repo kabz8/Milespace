@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
@@ -21,12 +22,15 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
+import { useLocation } from "wouter";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { contactFormSchema, type ContactForm } from "@shared/schema";
 import { apiRequest } from "@/lib/queryClient";
+import { serviceInterestOptions, serviceInterestEnum, type ServiceInterest } from "@shared/services";
 
 export default function Contact() {
   const { toast } = useToast();
+  const [location] = useLocation();
 
   const form = useForm<ContactForm>({
     resolver: zodResolver(contactFormSchema),
@@ -66,6 +70,19 @@ export default function Contact() {
   const onSubmit = (data: ContactForm) => {
     contactMutation.mutate(data);
   };
+
+  useEffect(() => {
+    const search = location.split("?")[1];
+    if (!search) return;
+    const params = new URLSearchParams(search);
+    const serviceParam = params.get("service");
+    if (!serviceParam) return;
+
+    const isValidService = (serviceInterestEnum as readonly string[]).includes(serviceParam);
+    if (isValidService) {
+      form.setValue("serviceInterest", serviceParam as ServiceInterest);
+    }
+  }, [location, form]);
 
   return (
     <div className="min-h-screen pt-16">
@@ -153,20 +170,18 @@ export default function Contact() {
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel>Service Interest</FormLabel>
-                            <Select
-                              onValueChange={field.onChange}
-                              defaultValue={field.value}
-                            >
+                            <Select onValueChange={field.onChange} value={field.value}>
                               <FormControl>
                                 <SelectTrigger data-testid="select-service">
                                   <SelectValue placeholder="Select a service" />
                                 </SelectTrigger>
                               </FormControl>
                               <SelectContent>
-                                <SelectItem value="consultation">Free Consultation</SelectItem>
-                                <SelectItem value="website">Website Development</SelectItem>
-                                <SelectItem value="software">Software Development</SelectItem>
-                                <SelectItem value="other">Other Services</SelectItem>
+                                {serviceInterestOptions.map((option) => (
+                                  <SelectItem key={option.value} value={option.value}>
+                                    {option.label}
+                                  </SelectItem>
+                                ))}
                               </SelectContent>
                             </Select>
                             <FormMessage />
